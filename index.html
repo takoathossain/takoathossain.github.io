@@ -307,7 +307,59 @@
     transition:border-color .15s, color .15s;
   }
   .attach-chip:hover{border-color:var(--accent); color:var(--accent);}
-
+.pptx-preview{
+    width:100%; aspect-ratio:16/10;
+    background:linear-gradient(135deg, var(--accent-soft) 0%, var(--panel) 60%, var(--amber-soft) 100%);
+    border-bottom:1px solid var(--line);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:14px;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    transition:background .25s ease;
+  }
+  .pptx-preview:hover{
+    background:linear-gradient(135deg, var(--accent-soft) 0%, var(--panel-2) 55%, var(--amber-soft) 100%);
+  }
+  .pptx-stack{
+    position:relative;
+    width:64px; height:64px;
+    transition:transform .3s cubic-bezier(.22,.61,.36,1);
+  }
+  .pptx-preview:hover .pptx-stack{
+    transform:translateY(-4px) rotate(-2deg);
+  }
+  .pptx-stack .sheet{
+    position:absolute;
+    width:54px; height:40px;
+    border-radius:6px;
+    border:1.5px solid var(--line);
+    box-shadow:0 4px 10px rgba(0,0,0,0.06);
+  }
+  .pptx-stack .sheet:nth-child(1){
+    background:#fff; top:16px; left:5px; transform:rotate(-8deg);
+  }
+  .pptx-stack .sheet:nth-child(2){
+    background:var(--amber-soft); top:8px; left:8px; transform:rotate(4deg);
+  }
+  .pptx-stack .sheet:nth-child(3){
+    background:var(--amber); top:0; left:5px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .pptx-stack .sheet:nth-child(3)::before{
+    content:'';
+    width:34px; height:3px; background:rgba(255,255,255,0.85); border-radius:2px;
+    box-shadow:0 7px 0 rgba(255,255,255,0.65), 0 14px 0 rgba(255,255,255,0.45);
+  }
+  .pptx-badge{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px; font-weight:600; letter-spacing:0.04em;
+    color:var(--amber);
+    background:#fff;
+    border:1px solid var(--line);
+    padding:5px 12px;
+    border-radius:100px;
+  }
   .thesis-panel{
     border:1px solid var(--line);
     background:var(--panel);
@@ -823,11 +875,14 @@
       <p>Click any box to add a cover slide preview. Download opens the full presentation file.</p>
     </div>
     <div class="card-grid">
-      <div class="proj-card">
-        <div class="media-slot" data-uploader="pres-1">
-          <div class="slot-placeholder"><div class="plus">+</div>Add cover slide image</div>
-          <div class="slot-replace">Replace</div>
-          <input type="file" accept="image/*">
+     <div class="proj-card">
+        <div class="pptx-preview" onclick="window.location.href='assets/Synchonous_Sequential_Logic.pptx'">
+          <div class="pptx-stack">
+            <div class="sheet"></div>
+            <div class="sheet"></div>
+            <div class="sheet"></div>
+          </div>
+          <span class="pptx-badge">.PPTX</span>
         </div>
         <div class="proj-body">
           <div class="tag-row"><span class="tag">Digital Electronics</span></div>
@@ -840,15 +895,18 @@
       </div>
 
       <div class="proj-card">
-        <div class="media-slot" data-uploader="pres-2">
-          <div class="slot-placeholder"><div class="plus">+</div>Add cover slide image</div>
-          <div class="slot-replace">Replace</div>
-          <input type="file" accept="image/*">
+        <div class="pptx-preview" onclick="window.location.href='assets/Group12_1_.pptx'">
+          <div class="pptx-stack">
+            <div class="sheet"></div>
+            <div class="sheet"></div>
+            <div class="sheet"></div>
+          </div>
+          <span class="pptx-badge">.PPTX</span>
         </div>
         <div class="proj-body">
           <div class="tag-row"><span class="tag">Group Presentation</span></div>
-          <h3>Presentation on FFT </h3>
-          <p>Group coursework presentation on DFT , FFT Method.</p>
+          <h3>Group 12 Presentation</h3>
+          <p>Group coursework presentation.</p>
           <div class="attach-row">
             <a class="attach-chip" href="assets/Group12_1_.pptx" download="Group12_1_.pptx">Download PPTX</a>
           </div>
@@ -856,10 +914,13 @@
       </div>
 
       <div class="proj-card">
-        <div class="media-slot" data-uploader="pres-3">
-          <div class="slot-placeholder"><div class="plus">+</div>Add cover slide image</div>
-          <div class="slot-replace">Replace</div>
-          <input type="file" accept="image/*">
+        <div class="pptx-preview" onclick="window.location.href='assets/Group_03.pptx'">
+          <div class="pptx-stack">
+            <div class="sheet"></div>
+            <div class="sheet"></div>
+            <div class="sheet"></div>
+          </div>
+          <span class="pptx-badge">.PPTX</span>
         </div>
         <div class="proj-body">
           <div class="tag-row"><span class="tag">Thesis Defense</span><span class="tag">EEG</span></div>
@@ -870,7 +931,6 @@
           </div>
         </div>
       </div>
-    </div>
   </section>
 
   <!-- PAPERS -->
