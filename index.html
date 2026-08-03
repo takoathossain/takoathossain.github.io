@@ -63,21 +63,25 @@
   .nav-inner{
     display:flex; align-items:center; justify-content:space-between;
     padding:18px 40px;
-    max-width:1180px; margin:0 auto;
+    max-width:1320px; margin:0 auto;
+    gap:16px;
   }
-  .logo{display:flex; align-items:center; gap:8px; font-family:'Instrument Sans',sans-serif; font-weight:700; font-size:17px;}
+  .logo{display:flex; align-items:center; gap:8px; font-family:'Instrument Sans',sans-serif; font-weight:700; font-size:17px; flex-shrink:0;}
   .logo .dot{width:9px; height:9px; border-radius:50%; background:var(--accent); display:inline-block;}
   .navlinks{
-    display:flex; align-items:center; gap:4px;
+    display:flex; align-items:center; gap:2px;
     background:var(--panel);
     border:1px solid var(--line);
     border-radius:100px;
     padding:4px;
+    flex:1 1 auto;
+    min-width:0;
+    justify-content:center;
   }
   .navlinks a{
-    font-size:13px; font-weight:500;
+    font-size:12.5px; font-weight:500;
     color:var(--text-dim);
-    padding:9px 15px;
+    padding:9px 13px;
     border-radius:100px;
     transition:background .15s, color .15s, transform .2s cubic-bezier(.22,.61,.36,1), box-shadow .2s ease;
     white-space:nowrap;
@@ -95,6 +99,7 @@
     transition:background .15s, transform .2s cubic-bezier(.22,.61,.36,1), box-shadow .2s ease;
     cursor:pointer;
     display:inline-block;
+    flex-shrink:0;
   }
   .nav-cta:hover{background:var(--accent); transform:translateY(-3px); box-shadow:0 8px 18px rgba(0,0,0,.12);}
   .nav-cta:active{transform:translateY(-1px) scale(.95); box-shadow:0 2px 6px rgba(0,0,0,.1);}
@@ -1800,4 +1805,3 @@
 
 </body>
 </html>
-
