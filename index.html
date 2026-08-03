@@ -434,6 +434,57 @@
   .pub-note{margin-top:26px; padding-top:22px; border-top:1px solid var(--line); font-size:13.5px; color:var(--text-dim);}
   .pub-note .lbl{font-family:'JetBrains Mono',monospace; color:var(--amber); font-size:11px; margin-bottom:8px; display:block;}
 
+  /* ===== CV Section ===== */
+  .cv-tabs{
+    display:flex; gap:8px; margin-bottom:28px;
+    background:var(--panel); border:1px solid var(--line);
+    border-radius:100px; padding:4px; width:fit-content;
+  }
+  .cv-tab-btn{
+    font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:600;
+    padding:10px 22px; border-radius:100px; cursor:pointer;
+    color:var(--text-dim); background:none; border:none;
+    transition:background .15s, color .15s;
+  }
+  .cv-tab-btn.active{background:#fff; color:var(--text); box-shadow:0 1px 2px rgba(0,0,0,.05);}
+  .cv-panel{display:none;}
+  .cv-panel.active{display:block;}
+  .cv-card{
+    border:1px solid var(--line);
+    background:var(--panel);
+    border-radius:var(--radius-lg);
+    padding:40px 44px;
+    display:flex; justify-content:space-between; align-items:center; gap:32px;
+    flex-wrap:wrap;
+  }
+  .cv-card-left{max-width:520px;}
+  .cv-card h3{font-size:22px; margin-bottom:8px;}
+  .cv-card p{color:var(--text-dim); font-size:14px; margin-bottom:0;}
+  .cv-icon{
+    width:56px; height:56px; border-radius:14px;
+    background:#fff; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700;
+    color:var(--accent); flex-shrink:0;
+  }
+  .cv-card-head{display:flex; align-items:center; gap:16px; margin-bottom:2px;}
+  .cv-actions{display:flex; gap:10px; flex-wrap:wrap; flex-shrink:0;}
+  .cv-actions a{
+    font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:600;
+    padding:12px 20px; border-radius:100px;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .cv-actions .cv-view{background:#fff; border:1px solid var(--line); color:var(--text);}
+  .cv-actions .cv-view:hover{border-color:var(--accent); color:var(--accent);}
+  .cv-actions .cv-download{background:var(--text); color:#fff;}
+  .cv-actions .cv-download:hover{background:var(--accent);}
+  @media (max-width:700px){
+    .cv-card{flex-direction:column; align-items:flex-start;}
+    .cv-actions{width:100%;}
+    .cv-actions a{flex:1; justify-content:center;}
+  }
+  /* ===== End CV Section ===== */
+
   footer{padding:64px 0 48px;}
   .footer-grid{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;}
   footer h3{font-size:26px; margin-bottom:8px;}
@@ -470,6 +521,7 @@
       <a href="#field-visits">Field Visits</a>
       <a href="#thesis">Thesis</a>
       <a href="#certifications">Certifications</a>
+      <a href="#cv">CV</a>
     </nav>
     <a href="#contact" class="nav-cta">Get in touch</a>
   </div>
@@ -815,7 +867,6 @@
         </tbody>
       </table>
     </details>
-</section>
 
     <!-- Skills (non-graded) -->
     <div class="sec-head" style="margin-top:48px;">
@@ -896,19 +947,7 @@
           <p>Embedded electrical control system for a motion-controlled miniature vehicle.</p>
         </div>
       </div>
-      <div class="proj-card">
-        <div class="media-slot" data-uploader="proj-7">
-          <div class="slot-placeholder"><div class="plus">+</div>Add image or video</div>
-          <div class="slot-replace">Replace</div>
-          <input type="file" accept="image/*,video/*">
-        </div>
-        <div class="proj-body">
-          <div class="tag-row"><span class="tag">Embedded</span><span class="tag">Controls</span></div>
-          <h3>Drone Projects</h3>
-          <p>Electrical and control system integration for drone builds.</p>
-        </div>
-      </div>
-
+     
       <div class="proj-card">
        <div class="media-slot" data-uploader="proj-8">
   <video src="assets/Video Project.mp4" muted playsinline loop></video>
@@ -1334,6 +1373,52 @@
     </div>
   </section>
 
+  <!-- CV -->
+  <section id="cv">
+    <div class="sec-head">
+      <span class="pill-tag">CV / Resume</span>
+      <h2>Download my CV</h2>
+      <p>Two versions available depending on what you're looking for — pick whichever fits.</p>
+    </div>
+
+    <div class="cv-tabs">
+      <button class="cv-tab-btn active" data-tab="corporate">Corporate CV</button>
+      <button class="cv-tab-btn" data-tab="research">Research CV</button>
+    </div>
+
+    <div class="cv-panel active" id="cv-corporate">
+      <div class="cv-card">
+        <div class="cv-card-left">
+          <div class="cv-card-head">
+            <div class="cv-icon">PDF</div>
+            <h3>Corporate CV</h3>
+          </div>
+          <p>Focused on industry roles: Circuit design, power systems, troubleshooting, project experience, and leadership. Best if you're hiring for an engineering or field based technical role.</p>
+        </div>
+        <div class="cv-actions">
+          <a class="cv-view" href="assets/Takoat_Hossain_CV.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="cv-download" href="assets/Takoat_Hossain_CV.pdf" download="Takoat_Hossain_CV.pdf">Download</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-panel" id="cv-research">
+      <div class="cv-card">
+        <div class="cv-card-left">
+          <div class="cv-card-head">
+            <div class="cv-icon">PDF</div>
+            <h3>Research CV</h3>
+          </div>
+          <p>Focused on research work: Thesis (MindMap, ST-GAT on EEG), publications, technical/ML skills, and academic references. Best for grad school, research collaborations, or academic contacts.</p>
+        </div>
+        <div class="cv-actions">
+          <a class="cv-view" href="assets/CV_Takoat_Hossain.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="cv-download" href="assets/CV_Takoat_Hossain.pdf" download="CV_Takoat_Hossain.pdf">Download</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </div>
 
 <footer id="contact">
@@ -1367,7 +1452,7 @@
 <script>
   // ---------- nav active state ----------
   const navA = document.querySelectorAll('.navlinks a');
-  const secIds = ['home','education','trainings','coursework','projects','simulations','presentations','papers','field-visits','thesis','certifications','contact'];
+  const secIds = ['home','education','trainings','coursework','projects','simulations','presentations','papers','field-visits','thesis','certifications','cv','contact'];
   window.addEventListener('scroll', () => {
     let current = '';
     secIds.forEach(id => {
@@ -1528,10 +1613,17 @@
       });
     });
   });
-</script>
 
-</body>
-</html>
+  // ---------- CV tab switcher ----------
+  document.querySelectorAll('.cv-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.cv-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.cv-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('cv-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
 
 </body>
 </html>
