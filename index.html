@@ -200,16 +200,15 @@
   .sec-head h2{font-size:34px; margin-top:14px;}
   .sec-head p{color:var(--text-dim); font-size:14.5px; margin-top:10px;}
 
-  /* ===== Page-based navigation (replaces continuous scroll) ===== */
+  /* ===== Page-based navigation (lighter / smoother transition) ===== */
   .page-section{
     display:none;
     opacity:0;
-    transform:translateY(28px);
-    transition:opacity .45s cubic-bezier(.22,.61,.36,1), transform .45s cubic-bezier(.22,.61,.36,1);
+    transform:translateY(10px);
+    transition:opacity .28s ease-out, transform .28s ease-out;
   }
   .page-section.active{display:block;}
   .page-section.active.show{opacity:1; transform:translateY(0);}
-  footer.page-section{border-bottom:none;}
   /* ===== End page-based navigation ===== */
 
   .about-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:48px; align-items:center;}
@@ -284,7 +283,7 @@
   }
   .course-pill .code{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--accent);}
 
-  /* ===== Semester grade tables (now collapsible dropdowns) ===== */
+  /* ===== Semester grade tables (collapsible dropdowns) ===== */
   .sem-block{
     border:1px solid var(--line);
     border-radius:var(--radius);
@@ -512,7 +511,8 @@
   }
   /* ===== End CV Section ===== */
 
-  footer{padding:64px 0 48px;}
+  /* ===== Footer: always visible, not part of page switching ===== */
+  footer{padding:64px 0 48px; border-top:1px solid var(--line); margin-top:12px;}
   .footer-grid{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;}
   footer h3{font-size:26px; margin-bottom:8px;}
   footer p{color:var(--text-dim); font-size:13.5px;}
@@ -526,11 +526,23 @@
 
   @media (max-width: 900px){
     .wrap, .nav-inner{padding-left:20px; padding-right:20px;}
-    .navlinks{display:none;}
     .hero h1{font-size:44px;}
     .hero-top, .about-grid, .edu-card, .row-item, .coursework-grid, .card-grid{grid-template-columns:1fr;}
     section{padding:60px 0;}
     .lightbox-inner img, .lightbox-inner video{max-width:96vw; max-height:80vh;}
+
+    /* ---- mobile nav: show a scrollable link bar instead of hiding navigation ---- */
+    .nav-inner{flex-wrap:wrap; row-gap:10px; padding-top:14px; padding-bottom:14px;}
+    .navlinks{
+      display:flex;
+      order:3;
+      width:100%;
+      overflow-x:auto;
+      justify-content:flex-start;
+      -webkit-overflow-scrolling:touch;
+    }
+    .navlinks a{padding:8px 13px; font-size:12.5px;}
+    .navlinks a:hover, .navlinks a.active{transform:none;}
   }
 </style>
 </head>
@@ -1449,7 +1461,8 @@
 
 </div>
 
-<footer id="contact" class="page-section">
+<!-- FOOTER: always rendered, outside the page-switching system -->
+<footer id="contact">
   <div class="wrap">
     <div class="footer-grid">
       <div>
@@ -1504,7 +1517,7 @@
   lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeLightbox(); });
 
-  // ---------- page-based navigation (replaces scroll-into-view) ----------
+  // ---------- page-based navigation (footer no longer part of this) ----------
   const pageGroups = {
     'home': ['home', 'about-body'],
     'education': ['education', 'trainings', 'coursework'],
@@ -1515,11 +1528,11 @@
     'field-visits': ['field-visits'],
     'thesis': ['thesis'],
     'certifications': ['certifications'],
-    'cv': ['cv'],
-    'contact': ['contact']
+    'cv': ['cv']
   };
   const allPageIds = Object.values(pageGroups).flat();
   const navA = document.querySelectorAll('.navlinks a, .nav-cta, .intro .btn');
+  const TRANSITION_MS = 220; // lighter / faster than before
 
   function setNavActive(pageId){
     navA.forEach(a => {
@@ -1561,7 +1574,7 @@
         const el = document.getElementById(id);
         if(el) el.classList.remove('show');
       });
-      setTimeout(doSwitch, 320); // wait for fade-out before swapping
+      setTimeout(doSwitch, TRANSITION_MS);
     } else {
       doSwitch();
     }
@@ -1575,7 +1588,7 @@
       const href = a.getAttribute('href') || '';
       if(!href.startsWith('#')) return;
       const id = href.slice(1);
-      if(!pageGroups[id]) return;
+      if(!pageGroups[id]) return; // e.g. "Get in touch" -> #contact: not a page, let it scroll to the footer naturally
       e.preventDefault();
       showPage(id, true);
     });
