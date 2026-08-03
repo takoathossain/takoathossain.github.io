@@ -77,18 +77,25 @@
     color:var(--text-dim);
     padding:9px 15px;
     border-radius:100px;
-    transition:background .15s, color .15s;
+    transition:background .15s, color .15s, transform .2s cubic-bezier(.22,.61,.36,1), box-shadow .2s ease;
     white-space:nowrap;
+    cursor:pointer;
+    display:inline-block;
   }
-  .navlinks a:hover, .navlinks a.active{background:#fff; color:var(--text); box-shadow:0 1px 2px rgba(0,0,0,.05);}
+  .navlinks a:hover, .navlinks a.active{background:#fff; color:var(--text); box-shadow:0 6px 16px rgba(0,0,0,.09); transform:translateY(-3px);}
+  .navlinks a:active{transform:translateY(-1px) scale(.95); box-shadow:0 2px 6px rgba(0,0,0,.08);}
   .nav-cta{
     font-size:13px; font-weight:600;
     background:var(--text); color:#fff;
     padding:11px 20px;
     border-radius:100px;
     white-space:nowrap;
+    transition:background .15s, transform .2s cubic-bezier(.22,.61,.36,1), box-shadow .2s ease;
+    cursor:pointer;
+    display:inline-block;
   }
-  .nav-cta:hover{background:var(--accent);}
+  .nav-cta:hover{background:var(--accent); transform:translateY(-3px); box-shadow:0 8px 18px rgba(0,0,0,.12);}
+  .nav-cta:active{transform:translateY(-1px) scale(.95); box-shadow:0 2px 6px rgba(0,0,0,.1);}
   .nav-scroll{overflow-x:auto; scrollbar-width:none;}
   .nav-scroll::-webkit-scrollbar{display:none;}
 
@@ -102,8 +109,11 @@
     font-size:13px; font-weight:600;
     background:var(--text); color:#fff;
     padding:12px 20px; border-radius:100px;
+    transition:background .15s, transform .2s cubic-bezier(.22,.61,.36,1), box-shadow .2s ease;
+    cursor:pointer;
   }
-  .intro .btn:hover{background:var(--accent);}
+  .intro .btn:hover{background:var(--accent); transform:translateY(-3px); box-shadow:0 8px 18px rgba(0,0,0,.12);}
+  .intro .btn:active{transform:translateY(-1px) scale(.95); box-shadow:0 2px 6px rgba(0,0,0,.1);}
 
   .photo-slot{
     width:100%; aspect-ratio:4/5;
@@ -189,6 +199,18 @@
   .sec-head{margin-bottom:44px; max-width:640px;}
   .sec-head h2{font-size:34px; margin-top:14px;}
   .sec-head p{color:var(--text-dim); font-size:14.5px; margin-top:10px;}
+
+  /* ===== Page-based navigation (replaces continuous scroll) ===== */
+  .page-section{
+    display:none;
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .45s cubic-bezier(.22,.61,.36,1), transform .45s cubic-bezier(.22,.61,.36,1);
+  }
+  .page-section.active{display:block;}
+  .page-section.active.show{opacity:1; transform:translateY(0);}
+  footer.page-section{border-bottom:none;}
+  /* ===== End page-based navigation ===== */
 
   .about-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:48px; align-items:center;}
   .about-photo{
@@ -444,8 +466,10 @@
     font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:600;
     padding:10px 22px; border-radius:100px; cursor:pointer;
     color:var(--text-dim); background:none; border:none;
-    transition:background .15s, color .15s;
+    transition:background .15s, color .15s, transform .2s cubic-bezier(.22,.61,.36,1), box-shadow .2s ease;
   }
+  .cv-tab-btn:hover{transform:translateY(-2px); box-shadow:0 6px 14px rgba(0,0,0,.08);}
+  .cv-tab-btn:active{transform:translateY(0) scale(.95);}
   .cv-tab-btn.active{background:#fff; color:var(--text); box-shadow:0 1px 2px rgba(0,0,0,.05);}
   .cv-panel{display:none;}
   .cv-panel.active{display:block;}
@@ -473,7 +497,10 @@
     font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:600;
     padding:12px 20px; border-radius:100px;
     display:inline-flex; align-items:center; gap:8px;
+    transition:transform .2s cubic-bezier(.22,.61,.36,1), box-shadow .2s ease, border-color .15s, background .15s, color .15s;
   }
+  .cv-actions a:hover{transform:translateY(-3px); box-shadow:0 8px 18px rgba(0,0,0,.1);}
+  .cv-actions a:active{transform:translateY(-1px) scale(.95);}
   .cv-actions .cv-view{background:#fff; border:1px solid var(--line); color:var(--text);}
   .cv-actions .cv-view:hover{border-color:var(--accent); color:var(--accent);}
   .cv-actions .cv-download{background:var(--text); color:#fff;}
@@ -490,8 +517,9 @@
   footer h3{font-size:26px; margin-bottom:8px;}
   footer p{color:var(--text-dim); font-size:13.5px;}
   .f-links{display:flex; gap:22px; font-family:'JetBrains Mono',monospace; font-size:12.5px;}
-  .f-links a{color:var(--text-dim); border-bottom:1px dotted transparent;}
-  .f-links a:hover{color:var(--accent); border-color:var(--accent);}
+  .f-links a{color:var(--text-dim); border-bottom:1px dotted transparent; transition:transform .2s cubic-bezier(.22,.61,.36,1), color .15s, border-color .15s;}
+  .f-links a:hover{color:var(--accent); border-color:var(--accent); transform:translateY(-2px);}
+  .f-links a:active{transform:translateY(0) scale(.95);}
   .foot-note{margin-top:40px; padding-top:24px; border-top:1px solid var(--line); font-size:11.5px; color:var(--text-faint); font-family:'JetBrains Mono',monospace;}
 
   input[type=file]{display:none;}
@@ -530,7 +558,7 @@
 <div class="wrap">
 
   <!-- HOME / HERO -->
-  <section id="home" class="hero">
+  <section id="home" class="hero page-section">
     <div class="hero-top">
       <div>
         <span class="pill-tag">EEE Graduate, SUST · CGPA 3.70/4.00</span>
@@ -558,7 +586,7 @@
   </section>
 
   <!-- ABOUT -->
-  <section id="about-body">
+  <section id="about-body" class="page-section">
     <div class="about-grid">
      <div class="photo-slot" id="about-photo">
   <img src="assets/iict.jpeg" alt="Md. Takoat Hossain">
@@ -578,7 +606,7 @@
   </section>
 
   <!-- EDUCATION -->
-  <section id="education">
+  <section id="education" class="page-section">
     <div class="sec-head">
       <span class="pill-tag">Education</span>
       <h2>Education</h2>
@@ -630,7 +658,7 @@
   </section>
 
   <!-- TRAININGS -->
-  <section id="trainings">
+  <section id="trainings" class="page-section">
     <div class="sec-head">
       <span class="pill-tag">Trainings</span>
       <h2>Industrial &amp; Technical Trainings</h2>
@@ -668,7 +696,7 @@
   </section>
 
   <!-- COURSEWORK -->
- <section id="coursework">
+ <section id="coursework" class="page-section">
     <div class="sec-head">
       <span class="pill-tag">Coursework and Skills</span>
       <h2>Core Coursework &amp; Skills</h2>
@@ -883,7 +911,7 @@
   </section>
 
   <!-- PROJECTS -->
-  <section id="projects">
+  <section id="projects" class="page-section">
     <div class="sec-head">
       <span class="pill-tag">Projects</span>
       <h2>Projects</h2>
@@ -1018,7 +1046,7 @@
   </section>
 
   <!-- SIMULATIONS -->
-  <section id="simulations">
+  <section id="simulations" class="page-section">
     <div class="sec-head">
       <span class="pill-tag">Simulations</span>
       <h2>Simulations</h2>
@@ -1159,7 +1187,7 @@
   </section>
 
   <!-- PRESENTATIONS -->
- <section id="presentations">
+ <section id="presentations" class="page-section">
     <div class="sec-head">
       <span class="pill-tag">Presentations</span>
       <h2>Presentations</h2>
@@ -1227,7 +1255,7 @@
 
 
   <!-- PAPERS -->
-<section id="papers">
+<section id="papers" class="page-section">
     <div class="sec-head">
       <span class="pill-tag">Papers</span>
       <h2>Published Papers</h2>
@@ -1256,7 +1284,7 @@
     </div>
   </section>
   <!-- FIELD VISITS -->
-  <section id="field-visits">
+  <section id="field-visits" class="page-section">
     <div class="sec-head">
       <span class="pill-tag">Field Visits</span>
       <h2>Field Visits</h2>
@@ -1280,7 +1308,7 @@
   </section>
 
   <!-- THESIS -->
-  <section id="thesis">
+  <section id="thesis" class="page-section">
     <div class="sec-head">
       <span class="pill-tag">Thesis</span>
       <h2>Undergraduate Thesis</h2>
@@ -1313,7 +1341,7 @@
   </section>
 
   <!-- CERTIFICATIONS -->
-  <section id="certifications">
+  <section id="certifications" class="page-section">
     <div class="sec-head">
       <span class="pill-tag">Certifications</span>
       <h2>Certifications</h2>
@@ -1374,7 +1402,7 @@
   </section>
 
   <!-- CV -->
-  <section id="cv">
+  <section id="cv" class="page-section">
     <div class="sec-head">
       <span class="pill-tag">CV / Resume</span>
       <h2>Download my CV</h2>
@@ -1421,7 +1449,7 @@
 
 </div>
 
-<footer id="contact">
+<footer id="contact" class="page-section">
   <div class="wrap">
     <div class="footer-grid">
       <div>
@@ -1450,20 +1478,6 @@
 </div>
 
 <script>
-  // ---------- nav active state ----------
-  const navA = document.querySelectorAll('.navlinks a');
-  const secIds = ['home','education','trainings','coursework','projects','simulations','presentations','papers','field-visits','thesis','certifications','cv','contact'];
-  window.addEventListener('scroll', () => {
-    let current = '';
-    secIds.forEach(id => {
-      const el = document.getElementById(id);
-      if(!el) return;
-      const rect = el.getBoundingClientRect();
-      if(rect.top <= 140 && rect.bottom >= 140) current = id;
-    });
-    navA.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
-  });
-
   // ---------- lightbox ----------
   const lightbox = document.getElementById('lightbox');
   const lbImg = document.getElementById('lightbox-img');
@@ -1489,6 +1503,87 @@
   document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeLightbox(); });
+
+  // ---------- page-based navigation (replaces scroll-into-view) ----------
+  const pageGroups = {
+    'home': ['home', 'about-body'],
+    'education': ['education', 'trainings', 'coursework'],
+    'projects': ['projects'],
+    'simulations': ['simulations'],
+    'presentations': ['presentations'],
+    'papers': ['papers'],
+    'field-visits': ['field-visits'],
+    'thesis': ['thesis'],
+    'certifications': ['certifications'],
+    'cv': ['cv'],
+    'contact': ['contact']
+  };
+  const allPageIds = Object.values(pageGroups).flat();
+  const navA = document.querySelectorAll('.navlinks a, .nav-cta, .intro .btn');
+
+  function setNavActive(pageId){
+    navA.forEach(a => {
+      const href = a.getAttribute('href') || '';
+      a.classList.toggle('active', href === '#' + pageId);
+    });
+  }
+
+  function showPage(pageId, animate){
+    if(!pageGroups[pageId]) pageId = 'home';
+    const targetIds = pageGroups[pageId];
+    const currentlyShown = allPageIds.filter(id => {
+      const el = document.getElementById(id);
+      return el && el.classList.contains('active');
+    });
+
+    const doSwitch = () => {
+      allPageIds.forEach(id => {
+        const el = document.getElementById(id);
+        if(!el) return;
+        if(targetIds.includes(id)){
+          el.classList.add('active');
+        } else {
+          el.classList.remove('active', 'show');
+        }
+      });
+      void document.body.offsetWidth; // force reflow so the fade-in transition replays
+      requestAnimationFrame(() => {
+        targetIds.forEach(id => {
+          const el = document.getElementById(id);
+          if(el) el.classList.add('show');
+        });
+      });
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    };
+
+    if(animate && currentlyShown.length){
+      currentlyShown.forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.classList.remove('show');
+      });
+      setTimeout(doSwitch, 320); // wait for fade-out before swapping
+    } else {
+      doSwitch();
+    }
+
+    setNavActive(pageId);
+    history.replaceState(null, '', '#' + pageId);
+  }
+
+  navA.forEach(a => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href') || '';
+      if(!href.startsWith('#')) return;
+      const id = href.slice(1);
+      if(!pageGroups[id]) return;
+      e.preventDefault();
+      showPage(id, true);
+    });
+  });
+
+  // initial load: honor URL hash if present, otherwise default to home
+  const initialHash = location.hash.replace('#', '');
+  showPage(pageGroups[initialHash] ? initialHash : 'home', false);
 
   // ---------- generic media uploader / static-media wiring ----------
   function setupSlot(container, key){
