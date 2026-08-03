@@ -262,6 +262,47 @@
   }
   .course-pill .code{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--accent);}
 
+  /* ===== Semester grade tables ===== */
+  .sem-block{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    margin-bottom:20px;
+    background:#fff;
+  }
+  .sem-head{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 26px;
+    background:var(--panel);
+    border-bottom:1px solid var(--line);
+  }
+  .sem-head h3{font-size:17px; margin:0;}
+  .sem-head .cgpa{
+    font-family:'JetBrains Mono',monospace; font-size:13px;
+    color:var(--accent); font-weight:600;
+  }
+  table.grade-table{width:100%; border-collapse:collapse;}
+  .grade-table th{
+    background:var(--panel-2); text-align:left;
+    font-size:11px; text-transform:uppercase; letter-spacing:0.04em;
+    color:var(--text-dim); padding:12px 26px;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .grade-table td{
+    padding:12px 26px; font-size:13.5px;
+    border-top:1px solid var(--line); color:var(--text);
+  }
+  .grade-table tbody tr:hover{background:var(--panel);}
+  .grade-table td.course-no{
+    font-family:'JetBrains Mono',monospace; color:var(--text-dim); font-size:12px;
+  }
+  .grade-table td.num{text-align:right; font-family:'JetBrains Mono',monospace;}
+  @media (max-width:900px){
+    .grade-table{font-size:12px;}
+    .grade-table th, .grade-table td{padding:10px 14px;}
+  }
+  /* ===== End semester grade tables ===== */
+
   .card-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
   .proj-card{
     border:1px solid var(--line);
@@ -425,7 +466,7 @@
     <div class="hero-top">
       <div>
         <span class="pill-tag">EEE Graduate, SUST · CGPA 3.70/4.00</span>
-        <h1 style="margin-top:22px;">EEG &amp;<br>Biomedical AI.</h1>
+        <h1 style="margin-top:22px;">Fresher.</h1>
         <div class="intro" style="margin-top:26px;">
           <p>I'm Md. Takoat Hossain. I turn raw brain signals into structured graphs an attention network can reason over, and I like the hardware side just as much as the model.</p>
           <a href="#thesis" class="btn">View my thesis →</a>
@@ -438,11 +479,12 @@
     </div>
 
     <div class="pill-strip">
-      <span>PyTorch</span>
-      <span>Arduino</span>
-      <span>ESP32</span>
-      <span>PCB Design</span>
+      <span>Electronics</span>
+      <span>VLSI</span>
+      <span>Embeded System</span>
+      <span>Signal Processing</span>
       <span>Power Systems</span>
+      <span>RF</span>
       <span>ST-GAT</span>
     </div>
   </section>
@@ -458,7 +500,7 @@
         <h2 style="margin-top:18px; font-size:30px;">Engineering has always been more than the checklist. It's how I understand systems.</h2>
         <p style="margin-top:20px;">I'm an Electrical &amp; Electronic Engineering graduate from SUST (CGPA 3.70/4.00, top 5.5%) with hands-on experience in circuit design, power systems, and electrical troubleshooting across a wide range of practical projects and industrial training.</p>
         <p>My undergraduate thesis, <strong>MindMap</strong>, models EEG as a graph (electrodes as nodes, functional connectivity as edges) and uses a Spatial Temporal Graph Attention Network to assess mental health, validated across four EEG datasets including a cross-device evaluation.</p>
-        <p>Beyond the lab, I managed finances for a 100+ member student body as Finance Secretary of IEEE Student Branch SUST, and I'm currently applying for roles while building toward a <strong>PhD for Fall 2027</strong>.</p>
+        <p>Beyond the lab, I managed finances for a 100+ member student body as Finance Secretary of IEEE Student Branch SUST, and I'm currently applying for <strong>Corporate Roles</strong>.</p> as well as planning toward a <strong>PhD for Fall 2027</strong>.</p>
         <div class="about-stat">
           <span class="n">3.70</span>
           <span class="l">CGPA out of 4.00, top 5.5% of my graduating class at SUST</span>
@@ -563,13 +605,202 @@
       <span class="pill-tag">Coursework and Skills</span>
       <h2>Core Coursework &amp; Skills</h2>
     </div>
+
+    <div class="about-stat" style="margin:0 0 40px; padding:26px 30px; border:1px solid var(--line); border-radius:var(--radius); background:var(--panel); border-top:none;">
+      <span class="n">163<span style="font-size:22px; color:var(--text-faint);">/163</span></span>
+      <span class="l">Total credits completed toward the B.Sc. in Electrical &amp; Electronic Engineering, SUST</span>
+    </div>
+
+    <!-- 1st Semester -->
+    <div class="sem-block">
+      <div class="sem-head">
+        <h3>1st Semester (1/1)</h3>
+        <span class="cgpa">CGPA: —</span>
+      </div>
+      <table class="grade-table">
+        <thead>
+          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th><th style="text-align:right;">Letter Grade</th><th style="text-align:right;">Grade Point</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="course-no">EEE121</td><td>Electrical Circuit I</td><td class="num">3</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td class="course-no">EEE122</td><td>Electrical Circuit I Lab</td><td class="num">1.5</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td class="course-no">CSE103E</td><td>Introduction to Computer Language</td><td class="num">3</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td class="course-no">CSE104E</td><td>Introduction to Computer Language Lab</td><td class="num">1.5</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td class="course-no">ENG101E</td><td>Effective Communication English</td><td class="num">2</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td class="course-no">ENG102E</td><td>English Language Lab I</td><td class="num">1</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td class="course-no">MAT101E</td><td>Differential and Integral Calculus</td><td class="num">3</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td class="course-no">PHY103E</td><td>Physics I</td><td class="num">3</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td class="course-no">PHY104E</td><td>Physics I Lab</td><td class="num">1.5</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td class="course-no">SSS100</td><td>History of the Emergence of Independent Bangladesh</td><td class="num">2</td><td class="num">—</td><td class="num">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 2nd Semester -->
+    <div class="sem-block">
+      <div class="sem-head">
+        <h3>2nd Semester (1/2)</h3>
+        <span class="cgpa">CGPA: 3.50</span>
+      </div>
+      <table class="grade-table">
+        <thead>
+          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th><th style="text-align:right;">Letter Grade</th><th style="text-align:right;">Grade Point</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="course-no">EEE123</td><td>Electric Circuit II</td><td class="num">3</td><td class="num">B-</td><td class="num">2.75</td></tr>
+          <tr><td class="course-no">EEE124</td><td>Electric Circuit II Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">PHY207E</td><td>Physics II</td><td class="num">3</td><td class="num">B+</td><td class="num">3.25</td></tr>
+          <tr><td class="course-no">PHY204E</td><td>Physics II Lab</td><td class="num">1.5</td><td class="num">A</td><td class="num">3.75</td></tr>
+          <tr><td class="course-no">CHE101E</td><td>Chemistry</td><td class="num">3</td><td class="num">B</td><td class="num">3</td></tr>
+          <tr><td class="course-no">CHE102E</td><td>Chemistry Lab</td><td class="num">1.5</td><td class="num">A</td><td class="num">3.75</td></tr>
+          <tr><td class="course-no">MAT103E</td><td>Co-Ordinate Geometry and Linear Algebra</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">ECO105E</td><td>Principles of Economics</td><td class="num">3</td><td class="num">A</td><td class="num">3.75</td></tr>
+          <tr><td class="course-no">ARC108E</td><td>Computer Aided Engineering Drawing</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 3rd Semester -->
+    <div class="sem-block">
+      <div class="sem-head">
+        <h3>3rd Semester (2/1)</h3>
+        <span class="cgpa">CGPA: 3.18</span>
+      </div>
+      <table class="grade-table">
+        <thead>
+          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th><th style="text-align:right;">Letter Grade</th><th style="text-align:right;">Grade Point</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="course-no">EEE221</td><td>Electronics I</td><td class="num">3</td><td class="num">C+</td><td class="num">2.5</td></tr>
+          <tr><td class="course-no">EEE222</td><td>Electronics I Lab</td><td class="num">1.5</td><td class="num">A-</td><td class="num">3.5</td></tr>
+          <tr><td class="course-no">EEE223</td><td>Electrical Machines I</td><td class="num">3</td><td class="num">C-</td><td class="num">2</td></tr>
+          <tr><td class="course-no">EEE224</td><td>Electrical Machines I Lab</td><td class="num">1.5</td><td class="num">B+</td><td class="num">3.25</td></tr>
+          <tr><td class="course-no">EEE210</td><td>Numerical Analysis Lab</td><td class="num">1</td><td class="num">A</td><td class="num">3.75</td></tr>
+          <tr><td class="course-no">MAT201E</td><td>Vector Analysis and Complex Variables</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">BUS243E</td><td>Cost and Management Accounting</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE231</td><td>Signals and Linear Systems</td><td class="num">3</td><td class="num">B</td><td class="num">3</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 4th Semester -->
+    <div class="sem-block">
+      <div class="sem-head">
+        <h3>4th Semester (2/2)</h3>
+        <span class="cgpa">CGPA: 3.60</span>
+      </div>
+      <table class="grade-table">
+        <thead>
+          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th><th style="text-align:right;">Letter Grade</th><th style="text-align:right;">Grade Point</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="course-no">EEE225</td><td>Electrical Machines II</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE226</td><td>Electrical Machines II Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE227</td><td>Electronics II</td><td class="num">3</td><td class="num">B</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE228</td><td>Electronics Lab II</td><td class="num">1.5</td><td class="num">B+</td><td class="num">3.25</td></tr>
+          <tr><td class="course-no">EEE229</td><td>Electromagnetic Fields and Waves</td><td class="num">3</td><td class="num">B+</td><td class="num">3.25</td></tr>
+          <tr><td class="course-no">EEE232</td><td>Electrical Services Design</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">STA202E</td><td>Basic Statistics and Probability</td><td class="num">3</td><td class="num">A-</td><td class="num">3.5</td></tr>
+          <tr><td class="course-no">MAT203E</td><td>Ordinary and Partial Differential Equations</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 5th Semester -->
+    <div class="sem-block">
+      <div class="sem-head">
+        <h3>5th Semester (3/1)</h3>
+        <span class="cgpa">CGPA: 3.69</span>
+      </div>
+      <table class="grade-table">
+        <thead>
+          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th><th style="text-align:right;">Letter Grade</th><th style="text-align:right;">Grade Point</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="course-no">EEE323</td><td>Digital Electronics</td><td class="num">3</td><td class="num">B</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE324</td><td>Digital Electronics Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE325</td><td>Power System I</td><td class="num">3</td><td class="num">A</td><td class="num">3.75</td></tr>
+          <tr><td class="course-no">EEE326</td><td>Power System I Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE327</td><td>Electrical Properties of Materials</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE331</td><td>Digital Signal Processing I</td><td class="num">3</td><td class="num">B+</td><td class="num">3.25</td></tr>
+          <tr><td class="course-no">EEE332</td><td>Digital Signal Processing I Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">MEE313E</td><td>Fundamentals of Mechanical Engineering</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 6th Semester -->
+    <div class="sem-block">
+      <div class="sem-head">
+        <h3>6th Semester (3/2)</h3>
+        <span class="cgpa">CGPA: 3.96</span>
+      </div>
+      <table class="grade-table">
+        <thead>
+          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th><th style="text-align:right;">Letter Grade</th><th style="text-align:right;">Grade Point</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="course-no">EEE329</td><td>Basic Communication Engineering</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE330</td><td>Basic Communication Engineering Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE333</td><td>Microprocessor and Interfacing</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE334</td><td>Microprocessor and Interfacing Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE335</td><td>Control System I</td><td class="num">3</td><td class="num">A</td><td class="num">3.75</td></tr>
+          <tr><td class="course-no">EEE336</td><td>Control System I Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE337</td><td>Power System II</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE339</td><td>Power Electronics</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE340</td><td>Power Electronics Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 7th Semester -->
+    <div class="sem-block">
+      <div class="sem-head">
+        <h3>7th Semester (4/1)</h3>
+        <span class="cgpa">CGPA: 3.96</span>
+      </div>
+      <table class="grade-table">
+        <thead>
+          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th><th style="text-align:right;">Letter Grade</th><th style="text-align:right;">Grade Point</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="course-no">EEE 400</td><td>Project/Thesis (Initial work)</td><td class="num">2</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE 421</td><td>Solid State Devices</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE 455</td><td>VLSI Design and Testing</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE 456</td><td>VLSI Design and Testing Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE 443</td><td>Power Plant Engineering</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE 475</td><td>RF and Microwave Engineering</td><td class="num">3</td><td class="num">A</td><td class="num">3.75</td></tr>
+          <tr><td class="course-no">EEE 476</td><td>RF and Microwave Engineering Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE 459</td><td>Compound Semiconductor and Hetero-Junction Devices</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE 402</td><td>Industrial Training</td><td class="num">1</td><td class="num">A+</td><td class="num">4</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 8th Semester — skeleton, fill in when available -->
+    <div class="sem-block">
+      <div class="sem-head">
+        <h3>8th Semester (4/2)</h3>
+        <span class="cgpa">CGPA: —</span>
+      </div>
+      <table class="grade-table">
+        <thead>
+          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th><th style="text-align:right;">Letter Grade</th><th style="text-align:right;">Grade Point</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="course-no">—</td><td>—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td class="course-no">—</td><td>—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td class="course-no">—</td><td>—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td class="course-no">—</td><td>—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Skills (non-graded) -->
+    <div class="sec-head" style="margin-top:48px;">
+      <span class="pill-tag">Skills</span>
+    </div>
     <div class="coursework-grid">
-      <div class="course-pill"><span>Digital Electronics</span><span class="code">EEE</span></div>
-      <div class="course-pill"><span>Circuit Theory</span><span class="code">EEE</span></div>
-      <div class="course-pill"><span>Power Systems</span><span class="code">EEE</span></div>
-      <div class="course-pill"><span>Communications Engineering</span><span class="code">EEE</span></div>
-      <div class="course-pill"><span>Microwave Engineering</span><span class="code">EEE</span></div>
-      <div class="course-pill"><span>Machine Learning</span><span class="code">CSE</span></div>
       <div class="course-pill"><span>Electrical &amp; Electronic Systems Troubleshooting</span><span class="code">Skill</span></div>
       <div class="course-pill"><span>Circuit &amp; PCB Design</span><span class="code">Skill</span></div>
       <div class="course-pill"><span>Power Supply &amp; Control Systems</span><span class="code">Skill</span></div>
@@ -936,18 +1167,18 @@
 
 
   <!-- PAPERS -->
- <section id="papers">
+<section id="papers">
     <div class="sec-head">
       <span class="pill-tag">Papers</span>
       <h2>Published Papers</h2>
-      <p>Conference and journal papers. Click any box to add a cover image, or click "View PDF" to read the full paper.</p>
+      <p>Conference and journal papers. Click a preview to open the full paper.</p>
     </div>
     <div class="card-grid">
       <div class="proj-card">
-        <div class="media-slot" data-uploader="paper-1">
-          <div class="slot-placeholder"><div class="plus">+</div>Add cover image</div>
-          <div class="slot-replace">Replace</div>
-          <input type="file" accept="image/*">
+        <div class="media-slot" onclick="window.open('assets/icrei.pdf', '_blank')" style="cursor:pointer; background:#fff;">
+          <iframe src="assets/icrei.pdf#page=1&view=FitH&toolbar=0&navpanes=0&scrollbar=0"
+                  style="width:100%; height:100%; border:none; pointer-events:none;"
+                  loading="lazy"></iframe>
         </div>
         <div class="proj-body">
           <div class="tag-row"><span class="tag">Speech Emotion Recognition</span><span class="tag">MFCC</span><span class="tag">ICERIE 2025</span></div>
@@ -957,7 +1188,7 @@
             N. Biswas, A. Rijvee, M. A. Mahdi, A. Azam, M. T. Hossain, "BSER-Bengali Speech Emotion Recognition using MFCC Features Based on SUBESCO and BanglaSER: A Comparative Study of Machine Learning Models," Proceedings of ICERIE 2025, Advances in Engineering Research, vol. 278, 2025.
           </p>
           <div class="attach-row">
-            <a class="attach-chip" href="assets/BSER_ICERIE2025.pdf" target="_blank" rel="noopener">View PDF</a>
+            <a class="attach-chip" href="assets/icrei.pdf" target="_blank" rel="noopener">View PDF</a>
             <a class="attach-chip" href="https://doi.org/10.2991/978-94-6463-884-4_77" target="_blank" rel="noopener">DOI ↗</a>
           </div>
         </div>
@@ -965,25 +1196,24 @@
     </div>
   </section>
   <!-- FIELD VISITS -->
+ <!-- FIELD VISITS -->
   <section id="field-visits">
     <div class="sec-head">
       <span class="pill-tag">Field Visits</span>
       <h2>Field Visits</h2>
-      <p>Industrial and site visit reports. Click any box to add a photo, or click "View PDF" to read the full report.</p>
+      <p>Industrial and site visit reports. Click a preview to open the full report.</p>
     </div>
     <div class="card-grid">
       <div class="proj-card">
-        <div class="media-slot" data-uploader="field-1">
-          <div class="slot-placeholder"><div class="plus">+</div>Add photo</div>
-          <div class="slot-replace">Replace</div>
-          <input type="file" accept="image/*">
+        <div class="media-slot" style="cursor:zoom-in;" onclick="openLightbox('assets/field.PNG', false)">
+          <img src="assets/field.PNG" alt="Field visit to Sylhet 225 MW Combined Cycle Power Plant">
         </div>
         <div class="proj-body">
-          <div class="tag-row"><span class="tag" style="color:var(--amber); background:var(--amber-soft); border-color:var(--amber-soft);">?</span></div>
-          <h3 style="color:var(--text-faint)">Add a field visit report</h3>
-          <p><span class="editnote">Tell me the site name and PDF filename</span></p>
+          <div class="tag-row"><span class="tag">Power System Protection</span><span class="tag">Combined Cycle Plant</span><span class="tag">EEE 445</span></div>
+          <h3>Sylhet 225 MW Combined Cycle Power Plant</h3>
+          <p>Industrial field visit to the BPDB-operated plant at Kumargaon, covering the gas turbine, HRSG, steam turbine, cooling water treatment, fuel system, HV switchyard, and protection equipment — including a live case study on a real breaker-coordination fault that had taken the steam turbine offline.</p>
           <div class="attach-row">
-            <a class="attach-chip" href="assets/field-1.pdf" target="_blank" rel="noopener">View PDF</a>
+            <a class="attach-chip" href="assets/field.pdf" target="_blank" rel="noopener">View PDF</a>
           </div>
         </div>
       </div>
