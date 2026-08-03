@@ -147,7 +147,7 @@
     opacity:0; transition:opacity .15s;
     z-index:5;
   }
-  .photo-slot:hover .slot-replace, .media-slot:hover .slot-replace, .edu-photo:hover .slot-replace{opacity:1;}
+  .slot-replace, .media-slot:hover .slot-replace, .edu-photo:hover .slot-replace{opacity:1;}
 
   .photo-slot img, .photo-slot video, .media-slot img, .media-slot video, .edu-photo img{
     transition:transform .35s cubic-bezier(.22,.61,.36,1);
@@ -513,6 +513,32 @@
   }
   /* ===== End CV Section ===== */
 
+  /* ===== References Section ===== */
+  .ref-card{
+    border:1px solid var(--line);
+    background:var(--panel);
+    border-radius:var(--radius);
+    padding:26px 30px;
+    display:flex; justify-content:space-between; align-items:flex-start; gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+  .ref-card-left h3{font-size:17px; margin-bottom:4px;}
+  .ref-card-left .ref-title{color:var(--accent); font-size:13px; font-family:'JetBrains Mono',monospace; margin-bottom:6px;}
+  .ref-card-left .ref-email{color:var(--text-dim); font-size:13.5px;}
+  .ref-card-left .ref-email a{color:var(--text-dim); border-bottom:1px dotted var(--text-faint); transition:color .15s, border-color .15s;}
+  .ref-card-left .ref-email a:hover{color:var(--accent); border-color:var(--accent);}
+  .ref-role-tag{
+    font-family:'JetBrains Mono',monospace; font-size:11px;
+    color:var(--amber); background:var(--amber-soft);
+    border:1px solid var(--line); padding:6px 13px; border-radius:100px;
+    white-space:nowrap; flex-shrink:0;
+  }
+  @media (max-width:700px){
+    .ref-card{flex-direction:column; align-items:flex-start;}
+  }
+  /* ===== End References Section ===== */
+
   /* ===== Footer: always visible, not part of page switching ===== */
   footer{padding:64px 0 48px; border-top:1px solid var(--line); margin-top:12px;}
   .footer-grid{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;}
@@ -564,6 +590,7 @@
       <a href="#thesis">Thesis</a>
       <a href="#certifications">Certifications</a>
       <a href="#cv">CV</a>
+      <a href="#references">References</a>
     </nav>
     <a href="#contact" class="nav-cta">Get in touch</a>
   </div>
@@ -1461,6 +1488,41 @@
     </div>
   </section>
 
+  <!-- REFERENCES -->
+  <section id="references" class="page-section">
+    <div class="sec-head">
+      <span class="pill-tag">References</span>
+      <h2>References</h2>
+      <p>Faculty who can speak to my academic and thesis work.</p>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-card-left">
+        <h3>Dr. Md. Rasedujjaman</h3>
+        <div class="ref-title">Associate Professor, Dept. of EEE, SUST</div>
+        <div class="ref-email"><a href="mailto:mrased-eee@sust.edu">mrased-eee@sust.edu</a></div>
+      </div>
+      <span class="ref-role-tag">Thesis Supervisor</span>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-card-left">
+        <h3>Md. Shariful Islam</h3>
+        <div class="ref-title">Assistant Professor, Dept. of EEE, SUST</div>
+        <div class="ref-email"><a href="mailto:shariful-eee@sust.edu">shariful-eee@sust.edu</a></div>
+      </div>
+      <span class="ref-role-tag">Thesis Co-Supervisor</span>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-card-left">
+        <h3>Dr. Mohammad Kamruzzaman Khan Prince</h3>
+        <div class="ref-title">Associate Professor, Dept. of EEE, SUST</div>
+        <div class="ref-email"><a href="mailto:kamruzzamaneee@sust.edu">kamruzzamaneee@sust.edu</a></div>
+      </div>
+    </div>
+  </section>
+
 </div>
 
 <!-- FOOTER: always rendered, outside the page-switching system -->
@@ -1530,7 +1592,8 @@
     'field-visits': ['field-visits'],
     'thesis': ['thesis'],
     'certifications': ['certifications'],
-    'cv': ['cv']
+    'cv': ['cv'],
+    'references': ['references']
   };
   const allPageIds = Object.values(pageGroups).flat();
   const navA = document.querySelectorAll('.navlinks a, .nav-cta, .intro .btn');
@@ -1737,3 +1800,4 @@
 
 </body>
 </html>
+
