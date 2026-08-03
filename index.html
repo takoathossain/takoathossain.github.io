@@ -262,12 +262,12 @@
   }
   .course-pill .code{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--accent);}
 
-  /* ===== Semester grade tables ===== */
+  /* ===== Semester grade tables (now collapsible dropdowns) ===== */
   .sem-block{
     border:1px solid var(--line);
     border-radius:var(--radius);
     overflow:hidden;
-    margin-bottom:20px;
+    margin-bottom:16px;
     background:#fff;
   }
   .sem-head{
@@ -275,11 +275,27 @@
     padding:18px 26px;
     background:var(--panel);
     border-bottom:1px solid var(--line);
+    cursor:pointer;
+    list-style:none;
+    user-select:none;
   }
+  .sem-block:not([open]) .sem-head{border-bottom:none;}
+  .sem-head::-webkit-details-marker{display:none;}
+  .sem-head::marker{content:'';}
+  .sem-head::after{
+    content:"▸";
+    margin-left:14px;
+    color:var(--text-dim);
+    font-size:13px;
+    transition:transform .2s ease;
+    flex-shrink:0;
+  }
+  .sem-block[open] .sem-head::after{transform:rotate(90deg); color:var(--accent);}
   .sem-head h3{font-size:17px; margin:0;}
   .sem-head .cgpa{
     font-family:'JetBrains Mono',monospace; font-size:13px;
     color:var(--accent); font-weight:600;
+    margin-left:auto; margin-right:14px;
   }
   table.grade-table{width:100%; border-collapse:collapse;}
   .grade-table th{
@@ -600,7 +616,7 @@
   </section>
 
   <!-- COURSEWORK -->
-  <section id="coursework">
+ <section id="coursework">
     <div class="sec-head">
       <span class="pill-tag">Coursework and Skills</span>
       <h2>Core Coursework &amp; Skills</h2>
@@ -612,193 +628,194 @@
     </div>
 
     <!-- 1st Semester -->
-    <div class="sem-block">
-      <div class="sem-head">
+    <details class="sem-block">
+      <summary class="sem-head">
         <h3>1st Semester (1/1)</h3>
         <span class="cgpa">CGPA: 3.77</span>
-      </div>
+      </summary>
       <table class="grade-table">
         <thead>
-          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th>
+          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th></tr>
         </thead>
         <tbody>
-          <tr><td class="course-no">EEE121</td><td>Electrical Circuit I</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE122</td><td>Electrical Circuit I Lab</td><td class="num">1.5</td><td class="num">B+</td><td class="num">3.25</td></tr>
-          <tr><td class="course-no">CSE103E</td><td>Introduction to Computer Language</td><td class="num">3</td><td class="num">A</td><td class="num">3.</td></tr>
-          <tr><td class="course-no">CSE104E</td><td>Introduction to Computer Language Lab</td><td class="num">1.5</td><td class="num">—</td><td class="num">—</td></tr>
-          <tr><td class="course-no">ENG101E</td><td>Effective Communication English</td><td class="num">2</td><td class="num">—</td><td class="num">—</td></tr>
-          <tr><td class="course-no">ENG102E</td><td>English Language Lab I</td><td class="num">1</td><td class="num">—</td><td class="num">—</td></tr>
-          <tr><td class="course-no">MAT101E</td><td>Differential and Integral Calculus</td><td class="num">3</td><td class="num">—</td><td class="num">—</td></tr>
-          <tr><td class="course-no">PHY103E</td><td>Physics I</td><td class="num">3</td><td class="num">—</td><td class="num">—</td></tr>
-          <tr><td class="course-no">PHY104E</td><td>Physics I Lab</td><td class="num">1.5</td><td class="num">—</td><td class="num">—</td></tr>
-          <tr><td class="course-no">SSS100</td><td>History of the Emergence of Independent Bangladesh</td><td class="num">2</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td class="course-no">EEE121</td><td>Electrical Circuit I</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE122</td><td>Electrical Circuit I Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">CSE103E</td><td>Introduction to Computer Language</td><td class="num">3</td></tr>
+          <tr><td class="course-no">CSE104E</td><td>Introduction to Computer Language Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">ENG101E</td><td>Effective Communication English</td><td class="num">2</td></tr>
+          <tr><td class="course-no">ENG102E</td><td>English Language Lab I</td><td class="num">1</td></tr>
+          <tr><td class="course-no">MAT101E</td><td>Differential and Integral Calculus</td><td class="num">3</td></tr>
+          <tr><td class="course-no">PHY103E</td><td>Physics I</td><td class="num">3</td></tr>
+          <tr><td class="course-no">PHY104E</td><td>Physics I Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">SSS100</td><td>History of the Emergence of Independent Bangladesh</td><td class="num">2</td></tr>
         </tbody>
       </table>
-    </div>
+    </details>
 
     <!-- 2nd Semester -->
-    <div class="sem-block">
-      <div class="sem-head">
+    <details class="sem-block">
+      <summary class="sem-head">
         <h3>2nd Semester (1/2)</h3>
         <span class="cgpa">CGPA: 3.50</span>
-      </div>
+      </summary>
       <table class="grade-table">
         <thead>
-          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th>
+          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th></tr>
         </thead>
         <tbody>
-          <tr><td class="course-no">EEE123</td><td>Electric Circuit II</td><td class="num">3</td><td class="num">B-</td><td class="num">2.75</td></tr>
-          <tr><td class="course-no">EEE124</td><td>Electric Circuit II Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">PHY207E</td><td>Physics II</td><td class="num">3</td><td class="num">B+</td><td class="num">3.25</td></tr>
-          <tr><td class="course-no">PHY204E</td><td>Physics II Lab</td><td class="num">1.5</td><td class="num">A</td><td class="num">3.75</td></tr>
-          <tr><td class="course-no">CHE101E</td><td>Chemistry</td><td class="num">3</td><td class="num">B</td><td class="num">3</td></tr>
-          <tr><td class="course-no">CHE102E</td><td>Chemistry Lab</td><td class="num">1.5</td><td class="num">A</td><td class="num">3.75</td></tr>
-          <tr><td class="course-no">MAT103E</td><td>Co-Ordinate Geometry and Linear Algebra</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">ECO105E</td><td>Principles of Economics</td><td class="num">3</td><td class="num">A</td><td class="num">3.75</td></tr>
-          <tr><td class="course-no">ARC108E</td><td>Computer Aided Engineering Drawing</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE123</td><td>Electric Circuit II</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE124</td><td>Electric Circuit II Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">PHY207E</td><td>Physics II</td><td class="num">3</td></tr>
+          <tr><td class="course-no">PHY204E</td><td>Physics II Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">CHE101E</td><td>Chemistry</td><td class="num">3</td></tr>
+          <tr><td class="course-no">CHE102E</td><td>Chemistry Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">MAT103E</td><td>Co-Ordinate Geometry and Linear Algebra</td><td class="num">3</td></tr>
+          <tr><td class="course-no">ECO105E</td><td>Principles of Economics</td><td class="num">3</td></tr>
+          <tr><td class="course-no">ARC108E</td><td>Computer Aided Engineering Drawing</td><td class="num">1.5</td></tr>
         </tbody>
       </table>
-    </div>
+    </details>
 
     <!-- 3rd Semester -->
-    <div class="sem-block">
-      <div class="sem-head">
+    <details class="sem-block">
+      <summary class="sem-head">
         <h3>3rd Semester (2/1)</h3>
         <span class="cgpa">CGPA: 3.18</span>
-      </div>
+      </summary>
       <table class="grade-table">
         <thead>
-          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th>
+          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th></tr>
         </thead>
         <tbody>
-          <tr><td class="course-no">EEE221</td><td>Electronics I</td><td class="num">3</td><td class="num">C+</td><td class="num">2.5</td></tr>
-          <tr><td class="course-no">EEE222</td><td>Electronics I Lab</td><td class="num">1.5</td><td class="num">A-</td><td class="num">3.5</td></tr>
-          <tr><td class="course-no">EEE223</td><td>Electrical Machines I</td><td class="num">3</td><td class="num">C-</td><td class="num">2</td></tr>
-          <tr><td class="course-no">EEE224</td><td>Electrical Machines I Lab</td><td class="num">1.5</td><td class="num">B+</td><td class="num">3.25</td></tr>
-          <tr><td class="course-no">EEE210</td><td>Numerical Analysis Lab</td><td class="num">1</td><td class="num">A</td><td class="num">3.75</td></tr>
-          <tr><td class="course-no">MAT201E</td><td>Vector Analysis and Complex Variables</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">BUS243E</td><td>Cost and Management Accounting</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE231</td><td>Signals and Linear Systems</td><td class="num">3</td><td class="num">B</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE221</td><td>Electronics I</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE222</td><td>Electronics I Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">EEE223</td><td>Electrical Machines I</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE224</td><td>Electrical Machines I Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">EEE210</td><td>Numerical Analysis Lab</td><td class="num">1</td></tr>
+          <tr><td class="course-no">MAT201E</td><td>Vector Analysis and Complex Variables</td><td class="num">3</td></tr>
+          <tr><td class="course-no">BUS243E</td><td>Cost and Management Accounting</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE231</td><td>Signals and Linear Systems</td><td class="num">3</td></tr>
         </tbody>
       </table>
-    </div>
+    </details>
 
     <!-- 4th Semester -->
-    <div class="sem-block">
-      <div class="sem-head">
+    <details class="sem-block">
+      <summary class="sem-head">
         <h3>4th Semester (2/2)</h3>
         <span class="cgpa">CGPA: 3.60</span>
-      </div>
+      </summary>
       <table class="grade-table">
         <thead>
-          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th>
+          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th></tr>
         </thead>
         <tbody>
-          <tr><td class="course-no">EEE225</td><td>Electrical Machines II</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE226</td><td>Electrical Machines II Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE227</td><td>Electronics II</td><td class="num">3</td><td class="num">B</td><td class="num">3</td></tr>
-          <tr><td class="course-no">EEE228</td><td>Electronics Lab II</td><td class="num">1.5</td><td class="num">B+</td><td class="num">3.25</td></tr>
-          <tr><td class="course-no">EEE229</td><td>Electromagnetic Fields and Waves</td><td class="num">3</td><td class="num">B+</td><td class="num">3.25</td></tr>
-          <tr><td class="course-no">EEE232</td><td>Electrical Services Design</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">STA202E</td><td>Basic Statistics and Probability</td><td class="num">3</td><td class="num">A-</td><td class="num">3.5</td></tr>
-          <tr><td class="course-no">MAT203E</td><td>Ordinary and Partial Differential Equations</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE225</td><td>Electrical Machines II</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE226</td><td>Electrical Machines II Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">EEE227</td><td>Electronics II</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE228</td><td>Electronics Lab II</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">EEE229</td><td>Electromagnetic Fields and Waves</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE232</td><td>Electrical Services Design</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">STA202E</td><td>Basic Statistics and Probability</td><td class="num">3</td></tr>
+          <tr><td class="course-no">MAT203E</td><td>Ordinary and Partial Differential Equations</td><td class="num">3</td></tr>
         </tbody>
       </table>
-    </div>
+    </details>
 
     <!-- 5th Semester -->
-    <div class="sem-block">
-      <div class="sem-head">
+    <details class="sem-block">
+      <summary class="sem-head">
         <h3>5th Semester (3/1)</h3>
         <span class="cgpa">CGPA: 3.69</span>
-      </div>
+      </summary>
       <table class="grade-table">
         <thead>
-          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th>
+          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th></tr>
         </thead>
         <tbody>
-          <tr><td class="course-no">EEE323</td><td>Digital Electronics</td><td class="num">3</td><td class="num">B</td><td class="num">3</td></tr>
-          <tr><td class="course-no">EEE324</td><td>Digital Electronics Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE325</td><td>Power System I</td><td class="num">3</td><td class="num">A</td><td class="num">3.75</td></tr>
-          <tr><td class="course-no">EEE326</td><td>Power System I Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE327</td><td>Electrical Properties of Materials</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE331</td><td>Digital Signal Processing I</td><td class="num">3</td><td class="num">B+</td><td class="num">3.25</td></tr>
-          <tr><td class="course-no">EEE332</td><td>Digital Signal Processing I Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">MEE313E</td><td>Fundamentals of Mechanical Engineering</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE323</td><td>Digital Electronics</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE324</td><td>Digital Electronics Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">EEE325</td><td>Power System I</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE326</td><td>Power System I Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">EEE327</td><td>Electrical Properties of Materials</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE331</td><td>Digital Signal Processing I</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE332</td><td>Digital Signal Processing I Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">MEE313E</td><td>Fundamentals of Mechanical Engineering</td><td class="num">3</td></tr>
         </tbody>
       </table>
-    </div>
+    </details>
 
     <!-- 6th Semester -->
-    <div class="sem-block">
-      <div class="sem-head">
+    <details class="sem-block">
+      <summary class="sem-head">
         <h3>6th Semester (3/2)</h3>
         <span class="cgpa">CGPA: 3.96</span>
-      </div>
+      </summary>
       <table class="grade-table">
         <thead>
-          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th>
+          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th></tr>
         </thead>
         <tbody>
-          <tr><td class="course-no">EEE329</td><td>Basic Communication Engineering</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE330</td><td>Basic Communication Engineering Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE333</td><td>Microprocessor and Interfacing</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE334</td><td>Microprocessor and Interfacing Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE335</td><td>Control System I</td><td class="num">3</td><td class="num">A</td><td class="num">3.75</td></tr>
-          <tr><td class="course-no">EEE336</td><td>Control System I Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE337</td><td>Power System II</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE339</td><td>Power Electronics</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE340</td><td>Power Electronics Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE329</td><td>Basic Communication Engineering</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE330</td><td>Basic Communication Engineering Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">EEE333</td><td>Microprocessor and Interfacing</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE334</td><td>Microprocessor and Interfacing Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">EEE335</td><td>Control System I</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE336</td><td>Control System I Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">EEE337</td><td>Power System II</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE339</td><td>Power Electronics</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE340</td><td>Power Electronics Lab</td><td class="num">1.5</td></tr>
         </tbody>
       </table>
-    </div>
+    </details>
 
     <!-- 7th Semester -->
-    <div class="sem-block">
-      <div class="sem-head">
+    <details class="sem-block">
+      <summary class="sem-head">
         <h3>7th Semester (4/1)</h3>
         <span class="cgpa">CGPA: 3.96</span>
-      </div>
+      </summary>
       <table class="grade-table">
         <thead>
-          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th>
+          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th></tr>
         </thead>
         <tbody>
-          <tr><td class="course-no">EEE 400</td><td>Project/Thesis (Initial work)</td><td class="num">2</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE 421</td><td>Solid State Devices</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE 455</td><td>VLSI Design and Testing</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE 456</td><td>VLSI Design and Testing Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE 443</td><td>Power Plant Engineering</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE 475</td><td>RF and Microwave Engineering</td><td class="num">3</td><td class="num">A</td><td class="num">3.75</td></tr>
-          <tr><td class="course-no">EEE 476</td><td>RF and Microwave Engineering Lab</td><td class="num">1.5</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE 459</td><td>Compound Semiconductor and Hetero-Junction Devices</td><td class="num">3</td><td class="num">A+</td><td class="num">4</td></tr>
-          <tr><td class="course-no">EEE 402</td><td>Industrial Training</td><td class="num">1</td><td class="num">A+</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE 400</td><td>Project/Thesis (Initial work)</td><td class="num">2</td></tr>
+          <tr><td class="course-no">EEE 421</td><td>Solid State Devices</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE 455</td><td>VLSI Design and Testing</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE 456</td><td>VLSI Design and Testing Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">EEE 443</td><td>Power Plant Engineering</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE 475</td><td>RF and Microwave Engineering</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE 476</td><td>RF and Microwave Engineering Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">EEE 459</td><td>Compound Semiconductor and Hetero-Junction Devices</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE 402</td><td>Industrial Training</td><td class="num">1</td></tr>
         </tbody>
       </table>
-    </div>
+    </details>
 
-    <!-- 8th Semester — skeleton, fill in when available -->
-    <div class="sem-block">
-      <div class="sem-head">
+    <!-- 8th Semester -->
+    <details class="sem-block">
+      <summary class="sem-head">
         <h3>8th Semester (4/2)</h3>
         <span class="cgpa">CGPA: —</span>
-      </div>
+      </summary>
       <table class="grade-table">
         <thead>
-          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th>
+          <tr><th>Course No</th><th>Course Title</th><th style="text-align:right;">Credit</th></tr>
         </thead>
         <tbody>
-          <tr><td class="course-no">EEE485</td><td>Cellular Mobile and Satellite Communication</td><td class="num">3</td><td class="num">—</td><td class="num">—</td></tr>
-          <tr><td class="course-no">EEE445</td><td>Power System Protection</td><td class="num">3</td><td class="num">—</td><td class="num">—</td></tr>
-          <tr><td class="course-no">EEE446</td><td>Power System Protection Lab</td><td class="num">1.5</td><td class="num">—</td><td class="num">—</td></tr>
-          <tr><td class="course-no">EEE465</td><td>Optoelectronics</td><td class="num">3</td><td class="num">—</td><td class="num">—</td></tr>
-          <tr><td class="course-no">EEE481</td><td>Optical Fiber Communication</td><td class="num">3</td><td class="num">—</td><td class="num">—</td></tr>
-          <tr><td class="course-no">EEE482</td><td>Optical Fiber Communication Lab</td><td class="num">1.5</td><td class="num">—</td><td class="num">—</td></tr>
-          <tr><td class="course-no">EEE408</td><td>Project/Thesis</td><td class="num">4</td><td class="num">—</td><td class="num">—</td></tr>
-          <tr><td class="course-no">EEE410</td><td>Viva Voce</td><td class="num">1</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td class="course-no">EEE485</td><td>Cellular Mobile and Satellite Communication</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE445</td><td>Power System Protection</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE446</td><td>Power System Protection Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">EEE465</td><td>Optoelectronics</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE481</td><td>Optical Fiber Communication</td><td class="num">3</td></tr>
+          <tr><td class="course-no">EEE482</td><td>Optical Fiber Communication Lab</td><td class="num">1.5</td></tr>
+          <tr><td class="course-no">EEE408</td><td>Project/Thesis</td><td class="num">4</td></tr>
+          <tr><td class="course-no">EEE410</td><td>Viva Voce</td><td class="num">1</td></tr>
         </tbody>
       </table>
-    </div>
+    </details>
+</section>
 
     <!-- Skills (non-graded) -->
     <div class="sec-head" style="margin-top:48px;">
